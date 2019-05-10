@@ -1,14 +1,16 @@
 
 def input_students
   puts "Please enter the names of the students"
+  puts "Then enter any hobbies"
   puts "To finish, just hit return twice"
   students =[]
-  name = gets.chomp
 
-  while !name.empty? do
-    students << {name: name, cohort: :november}
-    puts "Now we have #{students.count} students"
+  loop do
     name = gets.chomp
+    hobby = gets.chomp
+    break if name.empty?
+    students << {name: name, hobbies: hobby, cohort: :november}
+    puts "Now we have #{students.count} students"
   end
   students
 end
@@ -20,7 +22,7 @@ end
 def print(students)
   counter = 0
   while counter < students.count do
-      puts "#{students[counter][:name]} (#{students[counter][:cohort]} cohort)"
+      puts "#{students[counter][:name]} (#{students[counter][:cohort]} cohort) hobbies: #{students[counter][:hobbies]}"
       counter += 1
     end
 end
